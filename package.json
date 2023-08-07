@@ -1,0 +1,22 @@
+{
+  "name": "chia-datalayer-wrapper",
+  "version": "1.0.0",
+  "description": "Wrapper for Chia DataLayer RPCs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MichaelTaylor3D/ChiaDataLayerWrapper.git"
+  },
+  "keywords": [
+    "chia-blockchain"
+  ],
+  "author": "Michael Taylor",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MichaelTaylor3D/ChiaDataLayerWrapper/issues"
+  },
+  "homepage": "https://github.com/MichaelTaylor3D/ChiaDataLayerWrapper#readme"
+}
