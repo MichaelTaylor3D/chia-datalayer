@@ -1,6 +1,11 @@
 const { callAndAwaitChiaRPC } = require("./rpc-base");
+const { defaultConfig } = require("../utils/api-utils");
 
 module.exports = (config) => {
+  if (!config) {
+    config = defaultConfig;
+  }
+  
   return {
     addMirror: (params) => {
       return callAndAwaitChiaRPC(
