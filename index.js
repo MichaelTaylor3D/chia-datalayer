@@ -1,5 +1,3 @@
-const datalayer = require("./datalayer");
-
 let config = {
   full_node_host: "https://localhost:8555",
   datalayer_host: "https://localhost:8562",
@@ -17,7 +15,7 @@ function configure(newConfig) {
 module.exports = {
   defaultConfig: config,
   configure,
-  datalayer,
+  rpc: require("./rpcs/datalayer"),
 };
 
 

@@ -1,54 +1,8 @@
 const superagent = require("superagent");
 const https = require("https");
-const os = require("os");
-const path = require("path");
-const fs = require("fs");
-const { getChiaRoot } = require("../utils/chia-root");
 const fullnode = require("./fullnode");
-
-const getBaseOptions = (config) => {
-  const chiaRoot = getChiaRoot();
-  let cert, key;
-
-  if (process.env.CHIA_CERT_BASE64 && process.env.CHIA_KEY_BASE64) {
-    console.log(`Using cert and key from environment variables.`);
-
-    cert = Buffer.from(process.env.CHIA_CERT_BASE64, "base64").toString(
-      "ascii"
-    );
-    key = Buffer.from(process.env.CHIA_KEY_BASE64, "base64").toString("ascii");
-  } else {
-    let certificateFolderPath =
-      config.certificate_folder_path || `${chiaRoot}/config/ssl`;
-
-    // If certificateFolderPath starts with "~", replace it with the home directory
-    if (certificateFolderPath.startsWith("~")) {
-      certificateFolderPath = path.join(
-        os.homedir(),
-        certificateFolderPath.slice(1)
-      );
-    }
-
-    const certFile = path.resolve(
-      `${certificateFolderPath}/data_layer/private_data_layer.crt`
-    );
-    const keyFile = path.resolve(
-      `${certificateFolderPath}/data_layer/private_data_layer.key`
-    );
-
-    cert = fs.readFileSync(certFile);
-    key = fs.readFileSync(keyFile);
-  }
-
-  const baseOptions = {
-    method: "POST",
-    cert,
-    key,
-    timeout: 300000,
-  };
-
-  return baseOptions;
-};
+const wallet = require("./wallet");
+const { getBaseOptions } = require("../utils/api-utils");
 
 const callAndAwaitChiaRPC = async (
   url,
@@ -56,9 +10,17 @@ const callAndAwaitChiaRPC = async (
   config,
   options = { includeFee: true, maxAttempts: 10 }
 ) => {
-  const { cert, key } = getBaseOptions();
+  if (!options.includeFee) {
+    options.includeFee = true;
+  }
 
-  for (let attempt = 0; attempt < maxAttempts; attempt++) {
+  if (!options.maxAttempts) {
+    options.maxAttempts = 10;
+  }
+  
+  const { cert, key } = getBaseOptions(config);
+
+  for (let attempt = 0; attempt < options.maxAttempts; attempt++) {
     await wallet.walletIsSynced(config);
     await wallet.waitForAllTransactionsToConfirm(config);
 
@@ -91,10 +53,6 @@ const callAndAwaitChiaRPC = async (
           "Changelist resulted in no change to tree data"
         ) {
           return { success: true, message: response.body.error };
-        }
-
-        if (response.body.error.includes("non-hexadecimal number")) {
-          console.log(params);
         }
 
         throw new Error(

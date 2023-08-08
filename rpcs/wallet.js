@@ -1,6 +1,30 @@
 const superagent = require("superagent");
 const https = require("https");
-const { getBaseOptions } = require("./rpc-base");
+const { getBaseOptions } = require("../utils/api-utils");
+
+const walletIsSynced = async (config) => {
+  try {
+    const { cert, key, timeout } = getBaseOptions(config);
+
+    const response = await superagent
+      .post(`${config.wallet_host}/get_sync_status`)
+      .send({})
+      .key(key)
+      .cert(cert)
+      .timeout(timeout)
+      .agent(new https.Agent({ rejectUnauthorized: false }));
+
+    const data = JSON.parse(response.text);
+
+    if (data.success) {
+      return data.synced;
+    }
+
+    return false;
+  } catch (error) {
+    return false;
+  }
+};
 
 const walletIsAvailable = async (config) => {
   return await walletIsSynced(config);
@@ -49,6 +73,7 @@ const hasUnconfirmedTransactions = async (config, options) => {
 };
 
 module.exports = {
+  walletIsSynced,
   walletIsAvailable,
   waitForAllTransactionsToConfirm,
   hasUnconfirmedTransactions,

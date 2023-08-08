@@ -1,9 +1,9 @@
 const superagent = require("superagent");
-const { getBaseOptions } = require("./api-utils");
 const https = require("https");
+const { getBaseOptions } = require("../utils/api-utils");
 
 const getFeeEstimate = async (config) => {
-  const { cert, key } = getBaseOptions();
+  const { cert, key } = getBaseOptions(config);
 
   if (!config.full_node_host) {
     console.log(`Using default fee estimate: ${config.default_fee}`);
@@ -34,7 +34,9 @@ const getFeeEstimate = async (config) => {
     console.log(`Current fee estimate: ${mojos} mojos`);
     return mojos;
   } catch {
-    console.log("Error fetching fee estimate from the fullnode. Using default fee.");
+    console.log(
+      "Error fetching fee estimate from the fullnode. Using default fee."
+    );
     return config.default_fee;
   }
 };

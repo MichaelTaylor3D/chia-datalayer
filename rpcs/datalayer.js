@@ -2,16 +2,16 @@ const { callAndAwaitChiaRPC } = require("./rpc-base");
 
 module.exports = (config) => {
   return {
-    addMirror: async (params) => {
-      return await callAndAwaitChiaRPC(
+    addMirror: (params) => {
+      return callAndAwaitChiaRPC(
         `${config.datalayer_host}/add_mirror`,
         params,
         config
       );
     },
 
-    addMissingFiles: async (params) => {
-      return await callAndAwaitChiaRPC(
+    addMissingFiles: (params) => {
+      return callAndAwaitChiaRPC(
         `${config.datalayer_host}/add_missing_files`,
         params,
         config,
@@ -19,24 +19,24 @@ module.exports = (config) => {
       );
     },
 
-    createDataStore: async (params) => {
-      return await callAndAwaitChiaRPC(
+    createDataStore: (params) => {
+      return callAndAwaitChiaRPC(
         `${config.datalayer_host}/create_data_store`,
         params,
         config
       );
     },
 
-    deleteMirror: async (params) => {
-      return await callAndAwaitChiaRPC(
+    deleteMirror: (params) => {
+      return callAndAwaitChiaRPC(
         `${config.datalayer_host}/delete_mirror`,
         params,
         config
       );
     },
 
-    getKeys: async (params) => {
-      return await callAndAwaitChiaRPC(
+    getKeys: (params) => {
+      return callAndAwaitChiaRPC(
         `${config.datalayer_host}/get_keys`,
         params,
         config,
@@ -44,8 +44,8 @@ module.exports = (config) => {
       );
     },
 
-    getKeysValues: async (params) => {
-      return await callAndAwaitChiaRPC(
+    getKeysValues: (params) => {
+      return callAndAwaitChiaRPC(
         `${config.datalayer_host}/get_keys_values`,
         params,
         config,
@@ -53,8 +53,8 @@ module.exports = (config) => {
       );
     },
 
-    getKvDiff: async (params) => {
-      return await callAndAwaitChiaRPC(
+    getKvDiff: (params) => {
+      return callAndAwaitChiaRPC(
         `${config.datalayer_host}/get_kv_diff`,
         params,
         config,
@@ -62,8 +62,8 @@ module.exports = (config) => {
       );
     },
 
-    getMirrors: async (params) => {
-      return await callAndAwaitChiaRPC(
+    getMirrors: (params) => {
+      return callAndAwaitChiaRPC(
         `${config.datalayer_host}/get_mirrors`,
         params,
         config,
@@ -71,8 +71,8 @@ module.exports = (config) => {
       );
     },
 
-    getOwnedStores: async (params) => {
-      return await callAndAwaitChiaRPC(
+    getOwnedStores: (params) => {
+      return callAndAwaitChiaRPC(
         `${config.datalayer_host}/get_owned_stores`,
         params,
         config,
@@ -80,8 +80,8 @@ module.exports = (config) => {
       );
     },
 
-    getRoot: async (params) => {
-      return await callAndAwaitChiaRPC(
+    getRoot: (params) => {
+      return callAndAwaitChiaRPC(
         `${config.datalayer_host}/get_root`,
         params,
         config,
@@ -89,8 +89,8 @@ module.exports = (config) => {
       );
     },
 
-    getRootHistory: async (params) => {
-      return await callAndAwaitChiaRPC(
+    getRootHistory: (params) => {
+      return callAndAwaitChiaRPC(
         `${config.datalayer_host}/get_root_history`,
         params,
         config,
@@ -98,8 +98,8 @@ module.exports = (config) => {
       );
     },
 
-    getSubscriptions: async (params) => {
-      return await callAndAwaitChiaRPC(
+    getSubscriptions: (params) => {
+      return callAndAwaitChiaRPC(
         `${config.datalayer_host}/get_subscriptions`,
         params,
         config,
@@ -107,8 +107,8 @@ module.exports = (config) => {
       );
     },
 
-    getSyncStatus: async (params) => {
-      return await callAndAwaitChiaRPC(
+    getSyncStatus: (params) => {
+      return callAndAwaitChiaRPC(
         `${config.datalayer_host}/get_sync_status`,
         params,
         config,
@@ -116,8 +116,8 @@ module.exports = (config) => {
       );
     },
 
-    getValue: async (params) => {
-      return await callAndAwaitChiaRPC(
+    getValue: (params) => {
+      return callAndAwaitChiaRPC(
         `${config.datalayer_host}/get_value`,
         params,
         config,
@@ -125,8 +125,8 @@ module.exports = (config) => {
       );
     },
 
-    plugins: async (params) => {
-      return await callAndAwaitChiaRPC(
+    plugins: (params) => {
+      return callAndAwaitChiaRPC(
         `${config.datalayer_host}/plugins`,
         params,
         config,
@@ -134,8 +134,8 @@ module.exports = (config) => {
       );
     },
 
-    removeSubscription: async (params) => {
-      return await callAndAwaitChiaRPC(
+    removeSubscription: (params) => {
+      return callAndAwaitChiaRPC(
         `${config.datalayer_host}/remove_subscription`,
         params,
         config,
@@ -143,8 +143,8 @@ module.exports = (config) => {
       );
     },
 
-    subscribe: async (params) => {
-      return await callAndAwaitChiaRPC(
+    subscribe: (params) => {
+      return callAndAwaitChiaRPC(
         `${config.datalayer_host}/subscribe`,
         params,
         config,
@@ -152,8 +152,8 @@ module.exports = (config) => {
       );
     },
 
-    unsubscribe: async (params) => {
-      return await callAndAwaitChiaRPC(
+    unsubscribe: (params) => {
+      return callAndAwaitChiaRPC(
         `${config.datalayer_host}/unsubscribe`,
         params,
         config,
@@ -161,34 +161,12 @@ module.exports = (config) => {
       );
     },
 
-    updateDataStore: async (params) => {
-      return await callAndAwaitChiaRPC(
+    updateDataStore: (params) => {
+      return callAndAwaitChiaRPC(
         `${config.datalayer_host}/batch_update`,
         params,
         config
       );
     },
   };
-};
-
-module.exports = {
-  addMirror,
-  addMissingFiles,
-  createDataStore,
-  deleteMirror,
-  getKeys,
-  getKeysValues,
-  getKvDiff,
-  getMirrors,
-  getOwnedStores,
-  getRoot,
-  getRootHistory,
-  getSubscriptions,
-  getSyncStatus,
-  getValue,
-  plugins,
-  removeSubscription,
-  subscribe,
-  unsubscribe,
-  updateDataStore,
 };
