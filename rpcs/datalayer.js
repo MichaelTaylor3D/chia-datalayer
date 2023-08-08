@@ -7,170 +7,225 @@ module.exports = (config) => {
   }
   
   return {
-    addMirror: (params) => {
+    addMirror: (params, options = {}) => {
       return callAndAwaitChiaRPC(
         `${config.datalayer_host}/add_mirror`,
         params,
-        config
+        config,
+        options
       );
     },
 
-    addMissingFiles: (params) => {
+    addMissingFiles: (params, options = {}) => {
       return callAndAwaitChiaRPC(
         `${config.datalayer_host}/add_missing_files`,
         params,
         config,
-        { includeFee: false }
+        {
+          includeFee: false,
+          ...options,
+        }
       );
     },
 
-    createDataStore: (params) => {
+    createDataStore: (params, options = {}) => {
       return callAndAwaitChiaRPC(
         `${config.datalayer_host}/create_data_store`,
         params,
-        config
+        config,
+        {
+          includeFee: false,
+          ...options,
+        }
       );
     },
 
-    deleteMirror: (params) => {
+    deleteMirror: (params, options = {}) => {
       return callAndAwaitChiaRPC(
         `${config.datalayer_host}/delete_mirror`,
         params,
-        config
+        config,
+        {
+          includeFee: false,
+          ...options,
+        }
       );
     },
 
-    getKeys: (params) => {
+    getKeys: (params, options = {}) => {
       return callAndAwaitChiaRPC(
         `${config.datalayer_host}/get_keys`,
         params,
         config,
-        { includeFee: false }
+        {
+          includeFee: false,
+          ...options,
+        }
       );
     },
 
-    getKeysValues: (params) => {
+    getKeysValues: (params, options = {}) => {
       return callAndAwaitChiaRPC(
         `${config.datalayer_host}/get_keys_values`,
         params,
         config,
-        { includeFee: false }
+        {
+          includeFee: false,
+          ...options,
+        }
       );
     },
 
-    getKvDiff: (params) => {
+    getKvDiff: (params, options = {}) => {
       return callAndAwaitChiaRPC(
         `${config.datalayer_host}/get_kv_diff`,
         params,
         config,
-        { includeFee: false }
+        {
+          includeFee: false,
+          ...options,
+        }
       );
     },
 
-    getMirrors: (params) => {
+    getMirrors: (params, options = {}) => {
       return callAndAwaitChiaRPC(
         `${config.datalayer_host}/get_mirrors`,
         params,
         config,
-        { includeFee: false }
+        {
+          includeFee: false,
+          ...options,
+        }
       );
     },
 
-    getOwnedStores: (params) => {
+    getOwnedStores: (params, options = {}) => {
       return callAndAwaitChiaRPC(
         `${config.datalayer_host}/get_owned_stores`,
         params,
         config,
-        { includeFee: false }
+        {
+          includeFee: false,
+          ...options,
+        }
       );
     },
 
-    getRoot: (params) => {
+    getRoot: (params, options = {}) => {
       return callAndAwaitChiaRPC(
         `${config.datalayer_host}/get_root`,
         params,
         config,
-        { includeFee: false }
+        {
+          includeFee: false,
+          ...options,
+        }
       );
     },
 
-    getRootHistory: (params) => {
+    getRootHistory: (params, options = {}) => {
       return callAndAwaitChiaRPC(
         `${config.datalayer_host}/get_root_history`,
         params,
         config,
-        { includeFee: false }
+        {
+          includeFee: false,
+          ...options,
+        }
       );
     },
 
-    getSubscriptions: (params) => {
+    getSubscriptions: (params, options = {}) => {
       return callAndAwaitChiaRPC(
         `${config.datalayer_host}/get_subscriptions`,
         params,
         config,
-        { includeFee: false }
+        {
+          includeFee: false,
+          ...options,
+        }
       );
     },
 
-    getSyncStatus: (params) => {
+    getSyncStatus: (params, options = {}) => {
       return callAndAwaitChiaRPC(
         `${config.datalayer_host}/get_sync_status`,
         params,
         config,
-        { includeFee: false }
+        {
+          includeFee: false,
+          ...options,
+        }
       );
     },
 
-    getValue: (params) => {
+    getValue: (params, options = {}) => {
       return callAndAwaitChiaRPC(
         `${config.datalayer_host}/get_value`,
         params,
         config,
-        { includeFee: false }
+        {
+          includeFee: false,
+          ...options,
+        }
       );
     },
 
-    plugins: (params) => {
+    plugins: (params, options = {}) => {
       return callAndAwaitChiaRPC(
         `${config.datalayer_host}/plugins`,
         params,
         config,
-        { includeFee: false }
+        {
+          includeFee: false,
+          ...options,
+        }
       );
     },
 
-    removeSubscription: (params) => {
+    removeSubscription: (params, options = {}) => {
       return callAndAwaitChiaRPC(
         `${config.datalayer_host}/remove_subscription`,
         params,
         config,
-        { includeFee: false }
+        {
+          includeFee: false,
+          ...options,
+        }
       );
     },
 
-    subscribe: (params) => {
+    subscribe: (params, options = {}) => {
       return callAndAwaitChiaRPC(
         `${config.datalayer_host}/subscribe`,
         params,
         config,
-        { includeFee: false }
+        {
+          includeFee: false,
+          ...options,
+        }
       );
     },
 
-    unsubscribe: (params) => {
+    unsubscribe: (params, options = {}) => {
       return callAndAwaitChiaRPC(
         `${config.datalayer_host}/unsubscribe`,
         params,
         config,
-        { includeFee: false }
+        {
+          includeFee: false,
+          ...options,
+        }
       );
     },
 
-    updateDataStore: (params) => {
+    updateDataStore: (params, options = {}) => {
       return callAndAwaitChiaRPC(
         `${config.datalayer_host}/batch_update`,
         params,
-        config
+        config,
+        options
       );
     },
   };

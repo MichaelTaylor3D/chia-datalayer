@@ -8,7 +8,12 @@ const callAndAwaitChiaRPC = async (
   url,
   params,
   config,
-  options = { includeFee: true, maxAttempts: 10 }
+  options = {
+    includeFee: true,
+    maxAttempts: 10,
+    waitForWalletAvailability: true,
+    allowUnverifiedCert: true,
+  }
 ) => {
   if (!options.includeFee) {
     options.includeFee = true;
@@ -17,12 +22,22 @@ const callAndAwaitChiaRPC = async (
   if (!options.maxAttempts) {
     options.maxAttempts = 10;
   }
-  
+
+  if (!options.waitForWalletAvailability) {
+    options.waitForWalletAvailability = true;
+  }
+
+  if (!options.allowUnverifiedCert) {
+    options.allowUnverifiedCert = true;
+  }
+
   const { cert, key } = getBaseOptions(config);
 
   for (let attempt = 0; attempt < options.maxAttempts; attempt++) {
-    await wallet.walletIsSynced(config);
-    await wallet.waitForAllTransactionsToConfirm(config);
+    if (options.waitForWalletAvailability) {
+      await wallet.walletIsSynced(config);
+      await wallet.waitForAllTransactionsToConfirm(config);
+    }
 
     const body = {
       ...params,
@@ -39,13 +54,18 @@ const callAndAwaitChiaRPC = async (
     );
 
     try {
-      const response = await superagent
+      const requestPromise = superagent
         .post(url)
         .send(body)
         .set("Content-Type", "application/json")
         .key(key)
-        .cert(cert)
-        .agent(new https.Agent({ rejectUnauthorized: false }));
+        .cert(cert);
+
+      if (options.allowUnverifiedCert) {
+        requestPromise.agent(new https.Agent({ rejectUnauthorized: false }));
+      }
+
+      const response = await requestPromise;
 
       if (!response.body.success) {
         if (
