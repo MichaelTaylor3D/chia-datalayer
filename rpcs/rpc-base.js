@@ -1,6 +1,6 @@
 const superagent = require("superagent");
+const chiaFeeEstimator = require("chia-fee-estimator");
 const https = require("https");
-const fullnode = require("./fullnode");
 const wallet = require("./wallet");
 const { getBaseOptions } = require("../utils/api-utils");
 
@@ -15,21 +15,10 @@ const callAndAwaitChiaRPC = async (
     allowUnverifiedCert: true,
   }
 ) => {
-  if (!options.includeFee) {
-    options.includeFee = true;
-  }
-
-  if (!options.maxAttempts) {
-    options.maxAttempts = 10;
-  }
-
-  if (!options.waitForWalletAvailability) {
-    options.waitForWalletAvailability = true;
-  }
-
-  if (!options.allowUnverifiedCert) {
-    options.allowUnverifiedCert = true;
-  }
+  options.includeFee = options.includeFee ?? true;
+  options.maxAttempts = options.maxAttempts ?? 10;
+  options.waitForWalletAvailability = options.waitForWalletAvailability ?? true;
+  options.allowUnverifiedCert = options.allowUnverifiedCert ?? true;
 
   const { cert, key } = getBaseOptions(config);
 
@@ -44,7 +33,8 @@ const callAndAwaitChiaRPC = async (
     };
 
     if (options.includeFee) {
-      body.fee = await fullnode.getFeeEstimate(config);
+      chiaFeeEstimator.configure(config);
+      body.fee = await chiaFeeEstimator.getFeeEstimate(config);
     }
 
     console.log(

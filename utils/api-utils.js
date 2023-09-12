@@ -1,7 +1,7 @@
 const os = require("os");
 const path = require("path");
 const fs = require("fs");
-const { getChiaRoot } = require("../utils/chia-root");
+const { getChiaRoot } = require("chia-root-resolver");
 
 const defaultConfig = {
   full_node_host: "https://localhost:8555",
