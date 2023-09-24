@@ -1,6 +1,6 @@
 {
   "name": "chia-datalayer",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Wrapper for Chia DataLayer RPCs",
   "main": "index.js",
   "scripts": {

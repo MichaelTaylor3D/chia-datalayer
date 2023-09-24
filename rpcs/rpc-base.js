@@ -18,7 +18,7 @@ const callAndAwaitChiaRPC = async (
   options.includeFee = options.includeFee ?? true;
   options.maxAttempts = options.maxAttempts ?? 10;
   options.waitForWalletAvailability = options.waitForWalletAvailability ?? true;
-  options.allowUnverifiedCert = options.allowUnverifiedCert ?? true;
+  options.allowUnverifiedCert = options.allowUnverifiedCert ?? config.allowUnverifiedCert;
 
   const { cert, key } = getBaseOptions(config);
 
@@ -37,11 +37,7 @@ const callAndAwaitChiaRPC = async (
       body.fee = await chiaFeeEstimator.getFeeEstimate(config);
     }
 
-    console.log(
-      `Calling Chia RPC... ${JSON.stringify({
-        url,
-      })}`
-    );
+    console.log(`Calling Chia RPC: ${url}`);
 
     try {
       const requestPromise = superagent
