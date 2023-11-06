@@ -12,6 +12,7 @@ const defaultConfig = {
   default_fee: 300_000_000,
   default_mirror_coin_amount: 300_000_000,
   allowUnverifiedCert: true,
+  verbose: false
 };
 
 const getBaseOptions = (config) => {

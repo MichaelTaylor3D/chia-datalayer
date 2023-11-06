@@ -37,7 +37,10 @@ const callAndAwaitChiaRPC = async (
       body.fee = await chiaFeeEstimator.getFeeEstimate(config);
     }
 
-    console.log(`Calling Chia RPC: ${url}`);
+    if (config.verbose) {
+      console.log(`Calling Chia RPC: ${url}`);
+      console.log(JSON.stringify(body));
+    }
 
     try {
       const requestPromise = superagent
