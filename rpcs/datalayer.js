@@ -37,7 +37,7 @@ class DataLayer {
 
   createDataStore(params = {}, options = {}) {
     return callAndAwaitChiaRPC(
-      `${config.datalayer_host}/create_data_store`,
+      `${this.config.datalayer_host}/create_data_store`,
       params,
       this.config,
       {
@@ -169,7 +169,7 @@ class DataLayer {
 
   getValue(params, options = {}) {
     return callAndAwaitChiaRPC(
-      `${config.datalayer_host}/get_value`,
+      `${this.config.datalayer_host}/get_value`,
       params,
       this.config,
       {
