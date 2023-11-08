@@ -1,6 +1,6 @@
 {
   "name": "chia-datalayer",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "description": "Wrapper for Chia DataLayer RPCs",
   "main": "index.js",
   "scripts": {
@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/MichaelTaylor3D/chia-datalayer#readme",
   "dependencies": {
-    "chia-fee-estimator": "^1.0.5",
+    "chia-fee-estimator": "^1.0.6",
     "chia-root-resolver": "^1.0.0",
     "superagent": "^8.1.2"
   }
