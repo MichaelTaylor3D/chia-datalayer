@@ -38,7 +38,7 @@ const callAndAwaitChiaRPC = async (
     }
 
     if (config.verbose) {
-      console.log(`Calling Chia RPC: ${url}`);
+      console.log(`POST: ${url}`);
       console.log(JSON.stringify(body));
     }
 
@@ -65,7 +65,7 @@ const callAndAwaitChiaRPC = async (
         }
 
         throw new Error(
-          `FAILED: Calling Chia RPC: ${url} ${JSON.stringify(response.body)}}}`
+          `FAILED: POST: ${url}`
         );
       }
 
@@ -74,7 +74,7 @@ const callAndAwaitChiaRPC = async (
       console.log(error);
 
       if (attempt + 1 < options.maxAttempts) {
-        console.error("Retrying...");
+        console.error(`Retrying: POST: ${url}`);
       } else {
         return { success: false, error: error.message };
       }
