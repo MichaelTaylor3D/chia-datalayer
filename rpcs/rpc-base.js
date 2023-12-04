@@ -64,6 +64,10 @@ const callAndAwaitChiaRPC = async (
           return { success: true, message: response.body.error };
         }
 
+        if (config.verbose) {
+          console.log(`Result ${JSON.stringify(response.body)}`);
+        }
+
         throw new Error(
           `FAILED: POST: ${url}`
         );
