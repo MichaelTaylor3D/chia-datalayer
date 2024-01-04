@@ -107,10 +107,10 @@ class DataLayer {
     );
   }
 
-  getOwnedStores(params, options = {}) {
+  getOwnedStores(options = {}) {
     return callAndAwaitChiaRPC(
       `${this.config.datalayer_host}/get_owned_stores`,
-      params,
+      {},
       this.config,
       {
         includeFee: false,
@@ -122,6 +122,18 @@ class DataLayer {
   getRoot(params, options = {}) {
     return callAndAwaitChiaRPC(
       `${this.config.datalayer_host}/get_root`,
+      params,
+      this.config,
+      {
+        includeFee: false,
+        ...options,
+      }
+    );
+  }
+
+  walletLogin(params, options = {}) {
+    return callAndAwaitChiaRPC(
+      `${this.config.datalayer_host}/wallet_log_in`,
       params,
       this.config,
       {
@@ -143,10 +155,10 @@ class DataLayer {
     );
   }
 
-  getSubscriptions(params, options = {}) {
+  getSubscriptions(options = {}) {
     return callAndAwaitChiaRPC(
       `${this.config.datalayer_host}/get_subscriptions`,
-      params,
+      {},
       this.config,
       {
         includeFee: false,
@@ -179,10 +191,10 @@ class DataLayer {
     );
   }
 
-  plugins(params, options = {}) {
+  plugins(options = {}) {
     return callAndAwaitChiaRPC(
       `${this.config.datalayer_host}/plugins`,
-      params,
+      {},
       this.config,
       {
         includeFee: false,
@@ -191,7 +203,7 @@ class DataLayer {
     );
   }
 
-  removeSubscription(params, options = {}) {
+  removeSubscriptions(params, options = {}) {
     return callAndAwaitChiaRPC(
       `${this.config.datalayer_host}/remove_subscription`,
       params,

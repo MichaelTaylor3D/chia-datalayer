@@ -1,8 +1,9 @@
 {
   "name": "chia-datalayer",
-  "version": "2.0.9",
+  "version": "2.0.11",
   "description": "Wrapper for Chia DataLayer RPCs",
   "main": "index.js",
+  "types": "datalayer.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
