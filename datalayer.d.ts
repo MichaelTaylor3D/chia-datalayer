@@ -113,7 +113,7 @@ declare module "chia-datalayer" {
     allowUnverifiedCert?: boolean; // Optional: If true, allow unverified certificates
   }
 
-  export class DataLayer {
+  export default class DataLayer {
     constructor(config?: Config);
     getConfig(): Config;
     setConfig(config: Config): void;
