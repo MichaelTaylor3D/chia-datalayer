@@ -29,8 +29,8 @@ class DataLayer {
       params,
       this.config,
       {
-        includeFee: false,
         ...options,
+        includeFee: false,
       }
     );
   }
@@ -41,8 +41,8 @@ class DataLayer {
       params,
       this.config,
       {
-        includeFee: false,
         ...options,
+        includeFee: false,
       }
     );
   }
@@ -53,8 +53,8 @@ class DataLayer {
       params,
       this.config,
       {
-        includeFee: false,
         ...options,
+        includeFee: false,
       }
     );
   }
@@ -65,8 +65,8 @@ class DataLayer {
       params,
       this.config,
       {
-        includeFee: false,
         ...options,
+        includeFee: false,
       }
     );
   }
@@ -77,8 +77,8 @@ class DataLayer {
       params,
       this.config,
       {
-        includeFee: false,
         ...options,
+        includeFee: false,
       }
     );
   }
@@ -89,8 +89,8 @@ class DataLayer {
       params,
       this.config,
       {
-        includeFee: false,
         ...options,
+        includeFee: false,
       }
     );
   }
@@ -101,8 +101,8 @@ class DataLayer {
       params,
       this.config,
       {
-        includeFee: false,
         ...options,
+        includeFee: false,
       }
     );
   }
@@ -113,8 +113,8 @@ class DataLayer {
       {},
       this.config,
       {
-        includeFee: false,
         ...options,
+        includeFee: false,
       }
     );
   }
@@ -125,8 +125,8 @@ class DataLayer {
       params,
       this.config,
       {
-        includeFee: false,
         ...options,
+        includeFee: false,
       }
     );
   }
@@ -137,8 +137,8 @@ class DataLayer {
       params,
       this.config,
       {
-        includeFee: false,
         ...options,
+        includeFee: false,
       }
     );
   }
@@ -149,20 +149,20 @@ class DataLayer {
       params,
       this.config,
       {
-        includeFee: false,
         ...options,
+        includeFee: false,
       }
     );
   }
 
   getSubscriptions(options = {}) {
     return callAndAwaitChiaRPC(
-      `${this.config.datalayer_host}/get_subscriptions`,
+      `${this.config.datalayer_host}/subscriptions`,
       {},
       this.config,
       {
-        includeFee: false,
         ...options,
+        includeFee: false,
       }
     );
   }
@@ -173,8 +173,8 @@ class DataLayer {
       params,
       this.config,
       {
-        includeFee: false,
         ...options,
+        includeFee: false,
       }
     );
   }
@@ -185,8 +185,8 @@ class DataLayer {
       params,
       this.config,
       {
-        includeFee: false,
         ...options,
+        includeFee: false,
       }
     );
   }
@@ -197,8 +197,8 @@ class DataLayer {
       {},
       this.config,
       {
-        includeFee: false,
         ...options,
+        includeFee: false,
       }
     );
   }
@@ -209,8 +209,8 @@ class DataLayer {
       params,
       this.config,
       {
-        includeFee: false,
         ...options,
+        includeFee: false,
       }
     );
   }
@@ -221,8 +221,8 @@ class DataLayer {
       params,
       this.config,
       {
-        includeFee: false,
         ...options,
+        includeFee: false,
       }
     );
   }
@@ -233,8 +233,8 @@ class DataLayer {
       params,
       this.config,
       {
-        includeFee: false,
         ...options,
+        includeFee: false,
       }
     );
   }
