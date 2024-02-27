@@ -193,7 +193,7 @@ class DataLayer {
 
   plugins(options = {}) {
     return callAndAwaitChiaRPC(
-      `${this.config.datalayer_host}/plugins`,
+      `${this.config.datalayer_host}/check_plugins`,
       {},
       this.config,
       {
