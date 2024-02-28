@@ -40,10 +40,7 @@ class DataLayer {
       `${this.config.datalayer_host}/create_data_store`,
       params,
       this.config,
-      {
-        ...options,
-        includeFee: false,
-      }
+      options
     );
   }
 
