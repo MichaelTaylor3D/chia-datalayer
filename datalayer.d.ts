@@ -41,7 +41,7 @@ declare module "chia-datalayer" {
   }
 
   export interface DeleteMirrorParams {
-    id: string; // The coin_id of the mirror to delete
+    coin_id: string; // The coin_id of the mirror to delete
     fee?: string; // Optional: Set the fee for the transaction, in mojos
   }
 
