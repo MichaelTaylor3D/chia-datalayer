@@ -237,19 +237,11 @@ class DataLayer {
   }
 
   updateDataStore(params, options = {}) {
-    // Ensure params.submit_on_chain is true if not present
-    if (!params.hasOwnProperty("submit_on_chain")) {
-      params.submit_on_chain = true;
-    }
-
     return callAndAwaitChiaRPC(
       `${this.config.datalayer_host}/batch_update`,
       params,
       this.config,
-      {
-        ...options,
-        includeFee: Boolean(params.submit_on_chain),
-      }
+      options
     );
   }
 }
