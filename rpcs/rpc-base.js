@@ -69,7 +69,7 @@ const callAndAwaitChiaRPC = async (
         }
 
         throw new Error(
-          `FAILED: POST: ${url}`
+          `FAILED: POST: ${url} ${JSON.stringify(response.body)}`
         );
       }
 
