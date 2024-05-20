@@ -252,15 +252,6 @@ class DataLayer {
       }
     );
   }
-
-  submitPendingRoot(params, options = {}) {
-    return callAndAwaitChiaRPC(
-      `${this.config.datalayer_host}/submit_pending_root`,
-      params,
-      this.config,
-      options
-    );
-  }
 }
 
 module.exports = DataLayer;

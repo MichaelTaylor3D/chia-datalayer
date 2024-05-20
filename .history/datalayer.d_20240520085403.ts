@@ -114,11 +114,6 @@ declare module "chia-datalayer" {
     allowUnverifiedCert?: boolean; // Optional: If true, allow unverified certificates
   }
 
-  export interface SubmitPendingRootParams {
-    id: string; // The hexadecimal store ID
-    fee?: string; // Optional: Set the fee for the transaction, in mojos
-  }
-
   export default class DataLayer {
     constructor(config?: Config);
     getConfig(): Config;
@@ -143,6 +138,5 @@ declare module "chia-datalayer" {
     unsubscribe(params: UnsubscribeParams, options?: Options);
     updateDataStore(params: BatchUpdateParams, options?: Options);
     walletLogin(params: WalletLogInParams, options?: Options);
-    submitPendingRoot(params: SubmitPendingRootParams, options?: Options);
   }
 }

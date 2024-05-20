@@ -253,7 +253,7 @@ class DataLayer {
     );
   }
 
-  submitPendingRoot(params, options = {}) {
+  updateDataStore(params, options = {}) {
     return callAndAwaitChiaRPC(
       `${this.config.datalayer_host}/submit_pending_root`,
       params,
